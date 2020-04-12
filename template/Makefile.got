@@ -1,0 +1,49 @@
+;;;
+{
+    "pgotInclude" : [
+        "global.got",
+        "Makefile.src/mk-rm.got",
+        "Makefile.src/mk-docMain.got",
+        "Makefile.src/mk-mkFile.got",
+        "Makefile.src/mk-lint.got",
+        "Makefile.src/mk-todo.got"
+    ]
+}
+;;;
+.POSIX:
+
+PNAME = testcli
+
+RTEMPLATE ?= ../repo-template
+
+all: doc mkFile
+
+doc: docMain
+
+cleanDoc: cleanDocMain
+
+.DEFAULT_GOAL := all
+
+.PHONY: all doc cleanDoc
+
+#---Test/Check Section---
+
+TESTDIR = tests
+
+check:
+	cd $(TESTDIR) && go test -v
+
+cleanCheck:
+	find $(TESTDIR) -name '*.result' -delete
+
+.PHONY: check cleanCheck
+
+{{template "mk-docMain" .}}
+
+{{template "mk-mkFile" .}}
+
+{{template "mk-lint" .}}
+
+{{template "mk-todo" .}}
+
+# vim:set noet tw=80:

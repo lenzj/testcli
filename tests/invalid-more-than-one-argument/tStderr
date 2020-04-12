@@ -1,0 +1,6 @@
+Error: Incorrect number of arguments
+Purpose:  A trivial demonstration script. The argument string is processed
+          and printed to stdout.  Everything up to and including the first
+          letter "a" is deleted, and everything after and including the
+          last letter "a" is also deleted.
+Usage:    example.sh string
