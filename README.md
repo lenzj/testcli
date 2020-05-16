@@ -173,7 +173,7 @@ $ cd tests && go test -v
 If you have a bugfix, update, issue or feature enhancement the best way to reach
 me is by following the instructions in the link below.  Thank you!
 
-<https://blog.lenzplace.org/about/contact.html>
+<https://blog.lenzplace.org/contact>
 
 
 ## Versioning
