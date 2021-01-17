@@ -4,15 +4,11 @@ PNAME = testcli
 
 RTEMPLATE ?= ../repo-template
 
-all: doc mkFile
-
-doc: docMain
-
-cleanDoc: cleanDocMain
+all: check
 
 .DEFAULT_GOAL := all
 
-.PHONY: all doc cleanDoc
+.PHONY: all
 
 #---Test/Check Section---
 
@@ -36,9 +32,6 @@ regenDocMain:
 
 #---Generate Makefile---
 
-Makefile: template/Makefile.got
-	pgot -i ":$(RTEMPLATE)" -o $@ $<
-
 regenMakefile:
 	pgot -i ":$(RTEMPLATE)" -o Makefile template/Makefile.got
 
@@ -51,11 +44,15 @@ lint:
 		-type f -and -not -name 'Makefile' \
 		-exec grep -Hn '<no value>' '{}' ';'
 
+.PHONY: lint
+
 #---TODO Helper Target---
 
 todo:
 	@find . -path ./.git -prune -or \
 		-type f -and -not -name 'Makefile' \
 		-exec grep -Hn TODO '{}' ';'
+
+.PHONY: todo
 
 # vim:set noet tw=80:

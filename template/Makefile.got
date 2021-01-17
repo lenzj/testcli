@@ -16,15 +16,11 @@ PNAME = testcli
 
 RTEMPLATE ?= ../repo-template
 
-all: doc mkFile
-
-doc: docMain
-
-cleanDoc: cleanDocMain
+all: check
 
 .DEFAULT_GOAL := all
 
-.PHONY: all doc cleanDoc
+.PHONY: all
 
 #---Test/Check Section---
 
